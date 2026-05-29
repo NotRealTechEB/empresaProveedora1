@@ -6,11 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
 
 @Entity
 @Table(name = "empresas_proveedoras")
-@Data
 public class EmpresaProveedora {
 
     @Id
@@ -22,4 +20,41 @@ public class EmpresaProveedora {
 
     @Column(nullable = false, length = 100)
     private String nombre;
+
+    @Column(name = "piloto_id", nullable = false)
+    private Long pilotoId;
+
+    // --- GETTERS Y SETTERS MANUALES ---
+
+    public Long getIdEmpresaProveedora() {
+        return idEmpresaProveedora;
+    }
+
+    public void setIdEmpresaProveedora(Long idEmpresaProveedora) {
+        this.idEmpresaProveedora = idEmpresaProveedora;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Long getPilotoId() {
+        return pilotoId;
+    }
+
+    public void setPilotoId(Long pilotoId) {
+        this.pilotoId = pilotoId;
+    }
 }

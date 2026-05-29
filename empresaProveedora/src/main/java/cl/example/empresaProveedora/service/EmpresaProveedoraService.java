@@ -24,9 +24,16 @@ public class EmpresaProveedoraService {
     }
 
     public EmpresaProveedora guardarEmpresa(EmpresaProveedoraDTO dto) {
+        // Verificamos que el RUT no exista ya en la base de datos
+        Optional<EmpresaProveedora> existeRut = repository.findByRut(dto.getRut());
+        if (existeRut.isPresent()) {
+            throw new RuntimeException("El RUT ingresado ya pertenece a otra empresa proveedora.");
+        }
+
         EmpresaProveedora empresa = new EmpresaProveedora();
         empresa.setRut(dto.getRut());
         empresa.setNombre(dto.getNombre());
+        empresa.setPilotoId(dto.getPilotoId()); // <- Pasamos el pilotoId
         return repository.save(empresa);
     }
 
@@ -34,11 +41,16 @@ public class EmpresaProveedoraService {
         Optional<EmpresaProveedora> existente = repository.findById(id);
         if (existente.isPresent()) {
             EmpresaProveedora empresa = existente.get();
+            
+            // Opcional: si actualiza el RUT, habría que verificar que no choque con otro.
+            // Por simplicidad, aquí actualizamos los campos directo.
             empresa.setRut(dto.getRut());
             empresa.setNombre(dto.getNombre());
+            empresa.setPilotoId(dto.getPilotoId()); // <- Actualizamos el pilotoId
+            
             return repository.save(empresa);
         }
-        return null;
+        throw new RuntimeException("Empresa proveedora no encontrada con el ID: " + id);
     }
 
     public void eliminarEmpresa(Long id) {
