@@ -11,4 +11,4 @@ import cl.example.empresaProveedora.modelo.EmpresaProveedora;
 public interface EmpresaProveedoraRepository extends JpaRepository<EmpresaProveedora, Long> {
     
     Optional<EmpresaProveedora> findByRut(String rut);
-}
+}   

@@ -21,20 +21,20 @@ import cl.example.empresaProveedora.service.EmpresaProveedoraService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/empresas-proveedoras") // Ruta base para consumir este microservicio
+@RequestMapping("/api/empresas-proveedoras") 
 public class EmpresaProveedoraController {
 
     @Autowired
     private EmpresaProveedoraService service;
 
-    // 1. Obtener todas las empresas proveedoras (GET)
+ 
     @GetMapping
     public ResponseEntity<List<EmpresaProveedora>> obtenerTodas() {
         List<EmpresaProveedora> empresas = service.obtenerTodas();
         return new ResponseEntity<>(empresas, HttpStatus.OK);
     }
 
-    // 2. Obtener una empresa proveedora específica por su ID (GET)
+
     @GetMapping("/{id}")
     public ResponseEntity<EmpresaProveedora> obtenerPorId(@PathVariable Long id) {
         Optional<EmpresaProveedora> empresa = service.obtenerPorId(id);
@@ -42,29 +42,28 @@ public class EmpresaProveedoraController {
                       .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    // 3. Crear una nueva empresa proveedora (POST)
-    // El @Valid activa las reglas del DTO (@NotBlank y @Size). Si fallan, no entra al método.
+    
     @PostMapping
     public ResponseEntity<EmpresaProveedora> guardarEmpresa(@Valid @RequestBody EmpresaProveedoraDTO dto) {
         EmpresaProveedora nuevaEmpresa = service.guardarEmpresa(dto);
-        return new ResponseEntity<>(nuevaEmpresa, HttpStatus.CREATED); // Retorna código 201 Created
+        return new ResponseEntity<>(nuevaEmpresa, HttpStatus.CREATED); 
     }
 
-    // 4. Actualizar una empresa proveedora existente (PUT)
+    
     @PutMapping("/{id}")
     public ResponseEntity<EmpresaProveedora> actualizarEmpresa(@PathVariable Long id, @Valid @RequestBody EmpresaProveedoraDTO dto) {
         try {
             EmpresaProveedora empresaActualizada = service.actualizarEmpresa(id, dto);
             return new ResponseEntity<>(empresaActualizada, HttpStatus.OK);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Si el ID no existe, responde 404
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
         }
     }
 
-    // 5. Eliminar una empresa proveedora (DELETE)
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarEmpresa(@PathVariable Long id) {
         service.eliminarEmpresa(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Retorna código 204 No Content (Éxito sin cuerpo)
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
     }
 }

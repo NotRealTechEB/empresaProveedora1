@@ -21,11 +21,7 @@ public class EmpresaProveedora {
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "piloto_id", nullable = false)
-    private Long pilotoId;
-
-    // --- GETTERS Y SETTERS MANUALES ---
-
+   
     public Long getIdEmpresaProveedora() {
         return idEmpresaProveedora;
     }
@@ -49,12 +45,5 @@ public class EmpresaProveedora {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public Long getPilotoId() {
-        return pilotoId;
-    }
-
-    public void setPilotoId(Long pilotoId) {
-        this.pilotoId = pilotoId;
-    }
+    
 }
