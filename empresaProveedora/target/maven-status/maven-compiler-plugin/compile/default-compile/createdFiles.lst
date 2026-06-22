@@ -1,7 +1,0 @@
-cl/example/empresaProveedora/EmpresaProveedoraApplication.class
-cl/example/empresaProveedora/dto/EmpresaProveedoraDTO.class
-cl/example/empresaProveedora/excepcion/GlobalExceptionHandler.class
-cl/example/empresaProveedora/controller/EmpresaProveedoraController.class
-cl/example/empresaProveedora/modelo/EmpresaProveedora.class
-cl/example/empresaProveedora/service/EmpresaProveedoraService.class
-cl/example/empresaProveedora/repository/EmpresaProveedoraRepository.class
