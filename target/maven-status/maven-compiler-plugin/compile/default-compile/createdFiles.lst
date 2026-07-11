@@ -4,4 +4,5 @@ cl\example\empresaProveedora\repository\EmpresaProveedoraRepository.class
 cl\example\empresaProveedora\controller\EmpresaProveedoraController.class
 cl\example\empresaProveedora\modelo\EmpresaProveedora.class
 cl\example\empresaProveedora\dto\EmpresaProveedoraDTO.class
+cl\example\empresaProveedora\dto\EmpresaProveedoraResponseDTO.class
 cl\example\empresaProveedora\excepcion\GlobalExceptionHandler.class
